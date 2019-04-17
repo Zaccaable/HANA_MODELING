@@ -1,0 +1,16 @@
+ID: HANA_MODELING
+_schema-version: '2.0'
+version: 0.0.1
+
+modules:
+ - name: HDB
+   type: hdb
+   path: HDB
+   requires:
+    - name: hdi_HDB
+
+resources:
+ - name: hdi_HDB
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container

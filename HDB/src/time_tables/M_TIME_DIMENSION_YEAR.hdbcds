@@ -1,0 +1,6 @@
+namespace HANA_MODELING.HDB.time_tables;
+Entity M_TIME_DIMENSION_YEAR{
+	 key YEAR : String(4) not null;
+	 YEAR_INT : Integer;
+	 IS_LEAP_YEAR : Integer;
+};
