@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="HANA_MODELING.HDB.calc_views::TEST_TIME" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="TEST_TIME"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="HANA_MODELING.HDB.time_tables::M_TIME_DIMENSION">
+    <resourceUri>HANA_MODELING.HDB.time_tables::M_TIME_DIMENSION</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="DATETIMESTAMP">
+        <descriptions defaultDescription="DATETIMESTAMP"/>
+      </viewAttribute>
+      <viewAttribute id="DATE_SQL">
+        <descriptions defaultDescription="DATE_SQL"/>
+      </viewAttribute>
+      <viewAttribute id="DATETIME_SAP">
+        <descriptions defaultDescription="DATETIME_SAP"/>
+      </viewAttribute>
+      <viewAttribute id="DATE_SAP">
+        <descriptions defaultDescription="DATE_SAP"/>
+      </viewAttribute>
+      <viewAttribute id="YEAR">
+        <descriptions defaultDescription="YEAR"/>
+      </viewAttribute>
+      <viewAttribute id="QUARTER">
+        <descriptions defaultDescription="QUARTER"/>
+      </viewAttribute>
+      <viewAttribute id="MONTH">
+        <descriptions defaultDescription="MONTH"/>
+      </viewAttribute>
+      <viewAttribute id="WEEK">
+        <descriptions defaultDescription="WEEK"/>
+      </viewAttribute>
+      <viewAttribute id="WEEK_YEAR">
+        <descriptions defaultDescription="WEEK_YEAR"/>
+      </viewAttribute>
+      <viewAttribute id="DAY_OF_WEEK">
+        <descriptions defaultDescription="DAY_OF_WEEK"/>
+      </viewAttribute>
+      <viewAttribute id="DAY">
+        <descriptions defaultDescription="DAY"/>
+      </viewAttribute>
+      <viewAttribute id="HOUR">
+        <descriptions defaultDescription="HOUR"/>
+      </viewAttribute>
+      <viewAttribute id="MINUTE">
+        <descriptions defaultDescription="MINUTE"/>
+      </viewAttribute>
+      <viewAttribute id="SECOND">
+        <descriptions defaultDescription="SECOND"/>
+      </viewAttribute>
+      <viewAttribute id="CALQUARTER">
+        <descriptions defaultDescription="CALQUARTER"/>
+      </viewAttribute>
+      <viewAttribute id="CALMONTH">
+        <descriptions defaultDescription="CALMONTH"/>
+      </viewAttribute>
+      <viewAttribute id="CALWEEK">
+        <descriptions defaultDescription="CALWEEK"/>
+      </viewAttribute>
+      <viewAttribute id="YEAR_INT">
+        <descriptions defaultDescription="YEAR_INT"/>
+      </viewAttribute>
+      <viewAttribute id="QUARTER_INT">
+        <descriptions defaultDescription="QUARTER_INT"/>
+      </viewAttribute>
+      <viewAttribute id="MONTH_INT">
+        <descriptions defaultDescription="MONTH_INT"/>
+      </viewAttribute>
+      <viewAttribute id="WEEK_INT">
+        <descriptions defaultDescription="WEEK_INT"/>
+      </viewAttribute>
+      <viewAttribute id="WEEK_YEAR_INT">
+        <descriptions defaultDescription="WEEK_YEAR_INT"/>
+      </viewAttribute>
+      <viewAttribute id="DAY_OF_WEEK_INT">
+        <descriptions defaultDescription="DAY_OF_WEEK_INT"/>
+      </viewAttribute>
+      <viewAttribute id="DAY_INT">
+        <descriptions defaultDescription="DAY_INT"/>
+      </viewAttribute>
+      <viewAttribute id="HOUR_INT">
+        <descriptions defaultDescription="HOUR_INT"/>
+      </viewAttribute>
+      <viewAttribute id="MINUTE_INT">
+        <descriptions defaultDescription="MINUTE_INT"/>
+      </viewAttribute>
+      <viewAttribute id="SECOND_INT">
+        <descriptions defaultDescription="SECOND_INT"/>
+      </viewAttribute>
+      <viewAttribute id="MONTH_LAST_DAY">
+        <descriptions defaultDescription="MONTH_LAST_DAY"/>
+      </viewAttribute>
+      <viewAttribute id="TZNTSTMPS">
+        <descriptions defaultDescription="TZNTSTMPS"/>
+      </viewAttribute>
+      <viewAttribute id="TZNTSTMPL">
+        <descriptions defaultDescription="TZNTSTMPL"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="HANA_MODELING.HDB.time_tables::M_TIME_DIMENSION">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATETIMESTAMP" source="DATETIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATETIME_SAP" source="DATETIME_SAP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SAP" source="DATE_SAP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK" source="WEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK_YEAR" source="WEEK_YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY_OF_WEEK" source="DAY_OF_WEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOUR" source="HOUR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MINUTE" source="MINUTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SECOND" source="SECOND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_INT" source="YEAR_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER_INT" source="QUARTER_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_INT" source="MONTH_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK_INT" source="WEEK_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEEK_YEAR_INT" source="WEEK_YEAR_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY_OF_WEEK_INT" source="DAY_OF_WEEK_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DAY_INT" source="DAY_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOUR_INT" source="HOUR_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MINUTE_INT" source="MINUTE_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SECOND_INT" source="SECOND_INT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_LAST_DAY" source="MONTH_LAST_DAY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TZNTSTMPS" source="TZNTSTMPS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TZNTSTMPL" source="TZNTSTMPL"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="YEAR" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="Projection_1" columnName="YEAR"/>
+    </attribute>
+    <attribute id="DATE_SQL" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE_SQL"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DATE_SQL"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures>
+    <measure id="NUM_DAYS" order="2" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="INTEGER" length="">
+      <descriptions defaultDescription="NUM_DAYS"/>
+      <exceptionAggregation>
+        <attribute attributeName="DATE_SQL"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="209"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
