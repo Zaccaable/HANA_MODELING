@@ -4,5 +4,11 @@
       "object": "RECALL_DETAILS",
       "schema": "Analytics"
     }
+  },
+  "HANA_MODELING.HDB.synonyms::RECALL_MODELS": {
+    "target": {
+      "object": "RECALL_MODELS",
+      "schema": "Analytics"
+    }
   }
 }

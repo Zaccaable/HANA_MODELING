@@ -152,6 +152,11 @@
     </input>
     <joinAttribute name="datum_melding_bij_rdw"/>
   </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <viewAttributes/>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+  </calculationView>
 </calculationViews>
 <logicalModel id="Join_1">
   <attributes>
@@ -241,11 +246,16 @@
     </shape>
     <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="-56" y="22"/>
-      <rectangleSize width="361.2255859375"/>
+      <rectangleSize width="361"/>
     </shape>
     <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="445" y="12"/>
       <rectangleSize width="250"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="82" y="577"/>
+      <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>
 </layout>
