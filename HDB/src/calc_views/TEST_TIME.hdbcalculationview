@@ -148,6 +148,11 @@
       <descriptions defaultDescription="DATE_SQL"/>
       <keyMapping columnObjectName="Projection_1" columnName="DATE_SQL"/>
     </attribute>
+  
+    <attribute id="CALMONTH" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALMONTH"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CALMONTH"/>
+    </attribute>
   </attributes>
   <calculatedAttributes/>
   <baseMeasures/>
@@ -158,6 +163,7 @@
         <attribute attributeName="DATE_SQL"/>
       </exceptionAggregation>
       <formula>1</formula>
+      
       </measure>
   </calculatedMeasures>
   <restrictedMeasures/>
@@ -175,4 +181,4 @@
     </shape>
   </shapes>
 </layout>
-</Calculation:scenario> 
+</Calculation:scenario>
