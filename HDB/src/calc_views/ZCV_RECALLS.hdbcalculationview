@@ -1,20 +1,328 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="HANA_MODELING.HDB.calc_views::ZCV_RECALLS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
-<descriptions defaultDescription="ZCV_RECALLS"/>
+<descriptions defaultDescription="Recalls"/>
 <localVariables/>
 <variableMappings/>
-<dataSources/>
+<dataSources>
+  <DataSource id="HANA_MODELING.HDB.synonyms::RECALL_DETAILS">
+    <resourceUri>HANA_MODELING.HDB.synonyms::RECALL_DETAILS</resourceUri>
+  </DataSource>
+  <DataSource id="HANA_MODELING.HDB.time_tables::M_TIME_DIMENSION">
+    <resourceUri>HANA_MODELING.HDB.time_tables::M_TIME_DIMENSION</resourceUri>
+  </DataSource>
+</dataSources>
 <calculationViews>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
-    <viewAttributes/>
+    <viewAttributes>
+      <viewAttribute id="beschrijving_van_het_herstel">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="categorie_defect">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="datum_aankondiging_producent">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="datum_eigenaren_ge_nformeerd">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="datum_informeren_eigenaar">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="datum_melding_bij_rdw">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="materi_le_gevolgen">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="meer_informatie_op_internet">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="meer_informatie_via_telefoonnummer">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="meldende_producent_distributeur">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="nationaal_opgegeven_aantal_voertuigen_terugroepactie">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="omschrijving_defect">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="opmerkingen_rdw">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="publicatiedatum_rdw">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="referentiecode_producent">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="referentiecode_rdw">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="risicobeoordeling_rdw">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="totaal_aantal_voertuigen_terugroepactie">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+    </viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
+    <input node="HANA_MODELING.HDB.synonyms::RECALL_DETAILS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="beschrijving_van_het_herstel" source="beschrijving_van_het_herstel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="categorie_defect" source="categorie_defect"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="datum_aankondiging_producent" source="datum_aankondiging_producent"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="datum_eigenaren_ge_nformeerd" source="datum_eigenaren_ge_nformeerd"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="datum_informeren_eigenaar" source="datum_informeren_eigenaar"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="datum_melding_bij_rdw" source="datum_melding_bij_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="materi_le_gevolgen" source="materi_le_gevolgen"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="meer_informatie_op_internet" source="meer_informatie_op_internet"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="meer_informatie_via_telefoonnummer" source="meer_informatie_via_telefoonnummer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="meldende_producent_distributeur" source="meldende_producent_distributeur"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="nationaal_opgegeven_aantal_voertuigen_terugroepactie" source="nationaal_opgegeven_aantal_voertuigen_terugroepactie"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="omschrijving_defect" source="omschrijving_defect"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="opmerkingen_rdw" source="opmerkingen_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="publicatiedatum_rdw" source="publicatiedatum_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="referentiecode_producent" source="referentiecode_producent"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="referentiecode_rdw" source="referentiecode_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="risicobeoordeling_rdw" source="risicobeoordeling_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="totaal_aantal_voertuigen_terugroepactie" source="totaal_aantal_voertuigen_terugroepactie"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="YEAR">
+        <descriptions defaultDescription="YEAR"/>
+      </viewAttribute>
+      <viewAttribute id="CALQUARTER">
+        <descriptions defaultDescription="CALQUARTER"/>
+      </viewAttribute>
+      <viewAttribute id="CALMONTH">
+        <descriptions defaultDescription="CALMONTH"/>
+      </viewAttribute>
+      <viewAttribute id="CALWEEK">
+        <descriptions defaultDescription="CALWEEK"/>
+      </viewAttribute>
+      <viewAttribute id="DATE_SQL">
+        <descriptions defaultDescription="DATE_SQL"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="HANA_MODELING.HDB.time_tables::M_TIME_DIMENSION">
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="beschrijving_van_het_herstel">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="categorie_defect">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="datum_aankondiging_producent" aggregationType="sum">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="datum_eigenaren_ge_nformeerd" aggregationType="sum">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="datum_informeren_eigenaar" aggregationType="sum">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="datum_melding_bij_rdw" aggregationType="sum">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="materi_le_gevolgen">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="meer_informatie_op_internet">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="meer_informatie_via_telefoonnummer">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="meldende_producent_distributeur">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="nationaal_opgegeven_aantal_voertuigen_terugroepactie" aggregationType="sum">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="omschrijving_defect">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="opmerkingen_rdw">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="publicatiedatum_rdw" aggregationType="sum">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="referentiecode_producent">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="referentiecode_rdw">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="risicobeoordeling_rdw">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="totaal_aantal_voertuigen_terugroepactie" aggregationType="sum">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="YEAR">
+        <descriptions defaultDescription="YEAR"/>
+      </viewAttribute>
+      <viewAttribute id="CALQUARTER">
+        <descriptions defaultDescription="CALQUARTER"/>
+      </viewAttribute>
+      <viewAttribute id="CALMONTH">
+        <descriptions defaultDescription="CALMONTH"/>
+      </viewAttribute>
+      <viewAttribute id="CALWEEK">
+        <descriptions defaultDescription="CALWEEK"/>
+      </viewAttribute>
+      <viewAttribute id="DATE_SQL">
+        <descriptions defaultDescription="DATE_SQL"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="beschrijving_van_het_herstel" source="beschrijving_van_het_herstel"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="categorie_defect" source="categorie_defect"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="datum_aankondiging_producent" source="datum_aankondiging_producent"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="datum_eigenaren_ge_nformeerd" source="datum_eigenaren_ge_nformeerd"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="datum_informeren_eigenaar" source="datum_informeren_eigenaar"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="datum_melding_bij_rdw" source="datum_melding_bij_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="materi_le_gevolgen" source="materi_le_gevolgen"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="meer_informatie_op_internet" source="meer_informatie_op_internet"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="meer_informatie_via_telefoonnummer" source="meer_informatie_via_telefoonnummer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="meldende_producent_distributeur" source="meldende_producent_distributeur"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="nationaal_opgegeven_aantal_voertuigen_terugroepactie" source="nationaal_opgegeven_aantal_voertuigen_terugroepactie"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="omschrijving_defect" source="omschrijving_defect"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="opmerkingen_rdw" source="opmerkingen_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="publicatiedatum_rdw" source="publicatiedatum_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="referentiecode_producent" source="referentiecode_producent"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="referentiecode_rdw" source="referentiecode_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="risicobeoordeling_rdw" source="risicobeoordeling_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="totaal_aantal_voertuigen_terugroepactie" source="totaal_aantal_voertuigen_terugroepactie"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="datum_melding_bij_rdw" source="DATE_SQL"/>
+    </input>
+    <joinAttribute name="datum_melding_bij_rdw"/>
   </calculationView>
 </calculationViews>
-<logicalModel>
-  <attributes/>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="beschrijving_van_het_herstel" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="beschrijving_van_het_herstel"/>
+    </attribute>
+    <attribute id="categorie_defect" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="categorie_defect"/>
+    </attribute>
+    <attribute id="datum_aankondiging_producent" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="datum_aankondiging_producent"/>
+    </attribute>
+    <attribute id="datum_eigenaren_ge_nformeerd" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="datum_eigenaren_ge_nformeerd"/>
+    </attribute>
+    <attribute id="datum_informeren_eigenaar" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="datum_informeren_eigenaar"/>
+    </attribute>
+    <attribute id="datum_melding_bij_rdw" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="datum_melding_bij_rdw"/>
+    </attribute>
+    <attribute id="materi_le_gevolgen" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="materi_le_gevolgen"/>
+    </attribute>
+    <attribute id="meer_informatie_op_internet" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="meer_informatie_op_internet"/>
+    </attribute>
+    <attribute id="meer_informatie_via_telefoonnummer" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="meer_informatie_via_telefoonnummer"/>
+    </attribute>
+    <attribute id="meldende_producent_distributeur" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="meldende_producent_distributeur"/>
+    </attribute>
+    <attribute id="omschrijving_defect" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="omschrijving_defect"/>
+    </attribute>
+    <attribute id="opmerkingen_rdw" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="opmerkingen_rdw"/>
+    </attribute>
+    <attribute id="publicatiedatum_rdw" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="publicatiedatum_rdw"/>
+    </attribute>
+    <attribute id="referentiecode_producent" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="referentiecode_producent"/>
+    </attribute>
+    <attribute id="referentiecode_rdw" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="referentiecode_rdw"/>
+    </attribute>
+    <attribute id="risicobeoordeling_rdw" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="risicobeoordeling_rdw"/>
+    </attribute>
+    <attribute id="YEAR" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="Join_1" columnName="YEAR"/>
+    </attribute>
+    <attribute id="CALQUARTER" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALQUARTER"/>
+      <keyMapping columnObjectName="Join_1" columnName="CALQUARTER"/>
+    </attribute>
+    <attribute id="CALMONTH" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALMONTH"/>
+      <keyMapping columnObjectName="Join_1" columnName="CALMONTH"/>
+    </attribute>
+    <attribute id="CALWEEK" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALWEEK"/>
+      <keyMapping columnObjectName="Join_1" columnName="CALWEEK"/>
+    </attribute>
+    <attribute id="DATE_SQL" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE_SQL"/>
+      <keyMapping columnObjectName="Join_1" columnName="DATE_SQL"/>
+    </attribute>
+  </attributes>
   <calculatedAttributes/>
-  <baseMeasures/>
+  <baseMeasures>
+    <measure id="nationaal_opgegeven_aantal_voertuigen_terugroepactie" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription=" "/>
+      <measureMapping columnObjectName="Join_1" columnName="nationaal_opgegeven_aantal_voertuigen_terugroepactie"/>
+    </measure>
+    <measure id="totaal_aantal_voertuigen_terugroepactie" order="18" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription=" "/>
+      <measureMapping columnObjectName="Join_1" columnName="totaal_aantal_voertuigen_terugroepactie"/>
+    </measure>
+  </baseMeasures>
   <calculatedMeasures/>
   <restrictedMeasures/>
   <localDimensions/>
@@ -22,12 +330,30 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="40" y="85"/>
+      <upperLeftCorner x="221" y="112"/>
+    
+      <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="-52" y="212"/>
+      <upperLeftCorner x="92" y="376"/>
       <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="221" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="-56" y="22"/>
+      <rectangleSize width="361"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="445" y="12"/>
+      <rectangleSize width="250"/>
     </shape>
   </shapes>
 </layout>

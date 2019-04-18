@@ -1,5 +1,5 @@
 {
-  "HANA_MODELING.HDB::synonyms.RECALL_DETAILS": {
+  "HANA_MODELING.HDB.synonyms::RECALL_DETAILS": {
     "target": {
       "object": "RECALL_DETAILS",
       "schema": "Analytics"
