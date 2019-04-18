@@ -1,0 +1,32 @@
+{ 
+  "role":{ 
+    "name":"JUGO", 
+    "global_roles":[ 
+      "MODELING"
+    ], 
+    "system_privileges":[ 
+      "BACKUP_ADMIN", 
+      "USER_ADMIN" 
+    ], 
+    "schema_privileges":[ 
+      { 
+        "reference":"Analytics", 
+        "privileges":[ "SELECT" ], 
+        "privileges_with_grant_option":[ "UPDATE" ] 
+      } 
+    ], 
+    "object_privileges":[ 
+      { 
+        "name":"Table1", 
+        "type":"TABLE", 
+        "privileges":[ "SELECT" ], 
+        "privileges_with_grant_option":[ "UPDATE" ] 
+      } 
+    ], 
+    "schema_analytic_privileges":[ 
+      { 
+        "privileges": ["_SYS_BI_CP_ALL"]
+      }, 
+    ] 
+  } 
+}

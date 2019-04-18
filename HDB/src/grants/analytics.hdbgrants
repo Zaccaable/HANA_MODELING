@@ -1,0 +1,14 @@
+{
+	"ANALYTICS": {
+		"object_owner": { 
+			"roles": [
+				"JUGO"
+			]
+		},
+		"application_user": {
+			"roles": [
+				"JUGO"
+			]
+		}
+	}
+}

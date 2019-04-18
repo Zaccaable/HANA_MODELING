@@ -8,9 +8,47 @@ modules:
    path: HDB
    requires:
     - name: hdi_HDB
+      properties:
+        TARGET_CONTAINER: ~{hdi-container-name}
+
+
+    - name: cross-container-service-1
+      group: SERVICE_REPLACEMENTS
+
+      properties:
+        key: ServiceName_1
+        service: ~{the-service-name}
+                          
+
+
+
+    - name: cross-container-service-2
+      group: SERVICE_REPLACEMENTS
+
+      properties:
+        key: ServiceName_2
+        service: ~{the-service-name}
+                          
+
 
 resources:
  - name: hdi_HDB
    properties:
       hdi-container-name: ${service-name}
    type: com.sap.xs.hdi-container
+
+ - name: cross-container-service-1
+   parameters:
+      service-name: ANALYTICS
+   properties:
+      the-service-name: ${service-name}
+   type: org.cloudfoundry.existing-service
+
+
+ - name: cross-container-service-2
+   parameters:
+      service-name: ANALYTICS
+   properties:
+      the-service-name: ${service-name}
+   type: org.cloudfoundry.existing-service
+
