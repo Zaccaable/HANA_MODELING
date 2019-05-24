@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="HANA_MODELING.HDB.calc_views::ZCV_RECALLS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="Recalls"/>
-<localVariables/>
+<localVariables>
+  <variable id="IP_1" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties mandatory="true">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="Single"/>
+      <derivationRule>
+        <resourceUri>HANA_MODELING.HDB.procedures::last_month</resourceUri>
+      </derivationRule>
+    </variableProperties>
+  </variable>
+</localVariables>
 <variableMappings/>
 <dataSources>
   <DataSource id="HANA_MODELING.HDB.synonyms::RECALL_DETAILS">
@@ -159,28 +170,11 @@
     </input>
     <joinAttribute name="JOIN$publicatiedatum_rdw$DATE_SQL"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
-    <viewAttributes>
-      <viewAttribute id="merk">
-        <descriptions defaultDescription=" "/>
-      </viewAttribute>
-      <viewAttribute id="referentiecode_rdw">
-        <descriptions defaultDescription=" "/>
-      </viewAttribute>
-      <viewAttribute id="type">
-        <descriptions defaultDescription=" "/>
-      </viewAttribute>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <restrictedViewAttributes/>
-    <input node="HANA_MODELING.HDB.synonyms::RECALL_MODELS">
-      <mapping xsi:type="Calculation:AttributeMapping" target="merk" source="merk"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="referentiecode_rdw" source="referentiecode_rdw"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="type" source="type"/>
-    </input>
-  </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
     <viewAttributes>
+      <viewAttribute id="publicatiedatum_rdw">
+        <descriptions defaultDescription="publicatiedatum_rdw"/>
+      </viewAttribute>
       <viewAttribute id="datum_aankondiging_producent">
         <descriptions defaultDescription="datum_aankondiging_producent"/>
       </viewAttribute>
@@ -192,9 +186,6 @@
       </viewAttribute>
       <viewAttribute id="nationaal_opgegeven_aantal_voertuigen_terugroepactie" aggregationType="sum">
         <descriptions defaultDescription="nationaal_opgegeven_aantal_voertuigen_terugroepactie"/>
-      </viewAttribute>
-      <viewAttribute id="publicatiedatum_rdw">
-        <descriptions defaultDescription="publicatiedatum_rdw"/>
       </viewAttribute>
       <viewAttribute id="referentiecode_producent">
         <descriptions defaultDescription="referentiecode_producent"/>
@@ -238,6 +229,26 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="referentiecode_rdw" source="referentiecode_rdw"/>
     </input>
     <joinAttribute name="referentiecode_rdw"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <viewAttributes>
+      <viewAttribute id="merk">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="referentiecode_rdw">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="type">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="HANA_MODELING.HDB.synonyms::RECALL_MODELS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="merk" source="merk"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="referentiecode_rdw" source="referentiecode_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="type" source="type"/>
+    </input>
   </calculationView>
 </calculationViews>
 <logicalModel id="Join_1">
@@ -293,14 +304,22 @@
   
     <attribute id="merk" order="15" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription=" "/>
+  
       <keyMapping columnObjectName="Join_1" columnName="merk"/>
+  
     </attribute>
     <attribute id="type" order="16" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription=" "/>
       <keyMapping columnObjectName="Join_1" columnName="type"/>
     </attribute>
   </attributes>
-  <calculatedAttributes/>
+  <calculatedAttributes>
+    <calculatedAttribute id="CC_1" order="17" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="TINYINT" expressionLanguage="SQL">
+        <formula>month(&quot;datum_melding_bij_rdw&quot;)=TO_INT('$$IP_1$$')</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  </calculatedAttributes>
   <baseMeasures>
     <measure id="nationaal_opgegeven_aantal_voertuigen_terugroepactie" order="4" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription=" "/>
@@ -318,49 +337,49 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="260.5359092088943" y="112"/>
+      <upperLeftCorner x="260" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="302.0000000000001" y="496.9999988079071"/>
+      <upperLeftCorner x="302" y="496"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="318.3270017411401" y="356.9999988079071"/>
+      <upperLeftCorner x="318" y="356"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="260.5359092088943" y="217"/>
+      <upperLeftCorner x="260" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="27" y="65"/>
-      <rectangleSize width="250"/>
+      <rectangleSize width="361"/>
     </shape>
-    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="457" y="77"/>
-      <rectangleSize width="361.2255859375"/>
-    </shape>
-  
-    <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92.00000000000006" y="496.9999988079071"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize width="361"/>
     </shape>
   
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92.00000000000006" y="356.9999988079071"/>
+      <upperLeftCorner x="92" y="356"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="361.2255859375"/>
+      <rectangleSize width="361"/>
     </shape>
     <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="467" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-  </shapes>
+  
+  
+    <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="496"/>
+      <rectangleSize height="30" width="160"/>
+    </shape></shapes>
 </layout>
 </Calculation:scenario>
