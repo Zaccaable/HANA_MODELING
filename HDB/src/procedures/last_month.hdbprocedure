@@ -1,4 +1,4 @@
-PROCEDURE "HANA_MODELING.HDB.procedures::last_month"( )
+PROCEDURE "HANA_MODELING.HDB.procedures::last_month"(OUT output "HANA_MODELING.HDB.time_tables::M_TIME_DIMENSION")
    LANGUAGE SQLSCRIPT
    SQL SECURITY INVOKER
    --DEFAULT SCHEMA <default_schema_name>
@@ -7,5 +7,6 @@ BEGIN
    /*************************************
        Write your procedure logic 
    *************************************/
-   SELECT MONTH(CURRENT_DATE) from "HANA_MODELING.HDB.synonyms::DUMMY";
+   --output = SELECT MONTH(CURRENT_DATE), 4 from "HANA_MODELING.HDB.synonyms::DUMMY";
+   output = select top 10 * from "HANA_MODELING.HDB.time_tables::M_TIME_DIMENSION";
 END
