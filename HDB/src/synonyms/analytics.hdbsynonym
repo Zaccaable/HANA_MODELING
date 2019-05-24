@@ -10,5 +10,14 @@
       "object": "RECALL_MODELS",
       "schema": "Analytics"
     }
+  },
+
+  "HANA_MODELING.HDB.synonyms::DUMMY": {
+    "target": {
+      "object": "DUMMY",
+      "schema": "SYS"
+    }
   }
+
+
 }

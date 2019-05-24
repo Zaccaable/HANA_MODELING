@@ -10,6 +10,9 @@
   <DataSource id="HANA_MODELING.HDB.time_tables::M_TIME_DIMENSION">
     <resourceUri>HANA_MODELING.HDB.time_tables::M_TIME_DIMENSION</resourceUri>
   </DataSource>
+  <DataSource id="HANA_MODELING.HDB.synonyms::RECALL_MODELS">
+    <resourceUri>HANA_MODELING.HDB.synonyms::RECALL_MODELS</resourceUri>
+  </DataSource>
 </dataSources>
 <calculationViews>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
@@ -84,7 +87,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
     </input>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="Join_2" multiJoinOrder="Outside In">
     <viewAttributes>
       <viewAttribute id="datum_aankondiging_producent" aggregationType="sum">
         <descriptions defaultDescription=" "/>
@@ -128,6 +131,92 @@
       <viewAttribute id="DATE_SQL">
         <descriptions defaultDescription="DATE_SQL"/>
       </viewAttribute>
+    
+      <viewAttribute id="merk">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="type">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="DATE_SQL_1">
+        <descriptions defaultDescription="DATE_SQL"/>
+      </viewAttribute>
+      <viewAttribute hidden="true" id="JOIN$publicatiedatum_rdw$DATE_SQL"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$publicatiedatum_rdw$DATE_SQL" source="publicatiedatum_rdw"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL_1" source="DATE_SQL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$publicatiedatum_rdw$DATE_SQL" source="DATE_SQL"/>
+    </input>
+    <joinAttribute name="JOIN$publicatiedatum_rdw$DATE_SQL"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <viewAttributes>
+      <viewAttribute id="merk">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="referentiecode_rdw">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="type">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="HANA_MODELING.HDB.synonyms::RECALL_MODELS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="merk" source="merk"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="referentiecode_rdw" source="referentiecode_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="type" source="type"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="datum_aankondiging_producent">
+        <descriptions defaultDescription="datum_aankondiging_producent"/>
+      </viewAttribute>
+      <viewAttribute id="datum_eigenaren_ge_nformeerd">
+        <descriptions defaultDescription="datum_eigenaren_ge_nformeerd"/>
+      </viewAttribute>
+      <viewAttribute id="datum_melding_bij_rdw">
+        <descriptions defaultDescription="datum_melding_bij_rdw"/>
+      </viewAttribute>
+      <viewAttribute id="nationaal_opgegeven_aantal_voertuigen_terugroepactie" aggregationType="sum">
+        <descriptions defaultDescription="nationaal_opgegeven_aantal_voertuigen_terugroepactie"/>
+      </viewAttribute>
+      <viewAttribute id="publicatiedatum_rdw">
+        <descriptions defaultDescription="publicatiedatum_rdw"/>
+      </viewAttribute>
+      <viewAttribute id="referentiecode_producent">
+        <descriptions defaultDescription="referentiecode_producent"/>
+      </viewAttribute>
+      <viewAttribute id="referentiecode_rdw">
+        <descriptions defaultDescription="referentiecode_rdw"/>
+      </viewAttribute>
+      <viewAttribute id="risicobeoordeling_rdw">
+        <descriptions defaultDescription="risicobeoordeling_rdw"/>
+      </viewAttribute>
+      <viewAttribute id="totaal_aantal_voertuigen_terugroepactie" aggregationType="sum">
+        <descriptions defaultDescription="totaal_aantal_voertuigen_terugroepactie"/>
+      </viewAttribute>
+      <viewAttribute id="merk">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="referentiecode_rdw_1">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
+      <viewAttribute id="type">
+        <descriptions defaultDescription=" "/>
+      </viewAttribute>
     </viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
@@ -142,20 +231,13 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="risicobeoordeling_rdw" source="risicobeoordeling_rdw"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="totaal_aantal_voertuigen_terugroepactie" source="totaal_aantal_voertuigen_terugroepactie"/>
     </input>
-    <input node="Projection_2">
-      <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="datum_melding_bij_rdw" source="DATE_SQL"/>
+    <input node="Projection_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="merk" source="merk"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="referentiecode_rdw_1" source="referentiecode_rdw"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="type" source="type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="referentiecode_rdw" source="referentiecode_rdw"/>
     </input>
-    <joinAttribute name="datum_melding_bij_rdw"/>
-  </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
-    <viewAttributes/>
-    <calculatedViewAttributes/>
-    <restrictedViewAttributes/>
+    <joinAttribute name="referentiecode_rdw"/>
   </calculationView>
 </calculationViews>
 <logicalModel id="Join_1">
@@ -208,6 +290,15 @@
       <descriptions defaultDescription="DATE_SQL"/>
       <keyMapping columnObjectName="Join_1" columnName="DATE_SQL"/>
     </attribute>
+  
+    <attribute id="merk" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="merk"/>
+    </attribute>
+    <attribute id="type" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=" "/>
+      <keyMapping columnObjectName="Join_1" columnName="type"/>
+    </attribute>
   </attributes>
   <calculatedAttributes/>
   <baseMeasures>
@@ -227,35 +318,48 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="221" y="112"/>
+      <upperLeftCorner x="260.5359092088943" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="376"/>
+      <upperLeftCorner x="302.0000000000001" y="496.9999988079071"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="302" y="376"/>
+      <upperLeftCorner x="318.3270017411401" y="356.9999988079071"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="221" y="217"/>
+      <upperLeftCorner x="260.5359092088943" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
-    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="-56" y="22"/>
-      <rectangleSize width="361"/>
-    </shape>
-    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="445" y="12"/>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="27" y="65"/>
       <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="457" y="77"/>
+      <rectangleSize width="361.2255859375"/>
     </shape>
   
     <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="82" y="577"/>
+      <upperLeftCorner x="92.00000000000006" y="496.9999988079071"/>
       <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92.00000000000006" y="356.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="361.2255859375"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="467" y="30"/>
+      <rectangleSize width="250"/>
     </shape>
   </shapes>
 </layout>
